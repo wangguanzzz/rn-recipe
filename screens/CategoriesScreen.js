@@ -10,7 +10,8 @@ import {
   Platform
 } from "react-native";
 
-import Colors from "../constants/Colors";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTitle from "../components/CategoryGridTitle";
@@ -51,4 +52,19 @@ const styles = StyleSheet.create({
   }
 });
 
+CategoriesScreen.navigationOptions = navData => {
+  return {
+    headerLeft: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    )
+  };
+};
 export default CategoriesScreen;

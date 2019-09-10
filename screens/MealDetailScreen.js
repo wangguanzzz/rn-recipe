@@ -1,6 +1,13 @@
 import React from "react";
 
-import { View, Text, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+  Image
+} from "react-native";
 
 import { MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -12,16 +19,24 @@ const MealDetailScreen = props => {
   const selectedMeal = MEALS.find(meal => meal.id === mealID);
 
   return (
-    <View style={styles.screen}>
-      <Text>{selectedMeal.title}</Text>
+    <ScrollView>
+      <Image />
+      <View>
+        <Text> {props.duration}m</Text>
+        <Text> {props.complexity}</Text>
+        <Text> {props.affordability}</Text>
+      </View>
+      <View style={styles.screen}>
+        <Text>{selectedMeal.title}</Text>
 
-      <Button
-        title="Go back to category"
-        onPress={() => {
-          props.navigation.popToTop();
-        }}
-      />
-    </View>
+        <Button
+          title="Go back to category"
+          onPress={() => {
+            props.navigation.popToTop();
+          }}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
